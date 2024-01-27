@@ -1,15 +1,20 @@
 "use client";
 
+
 import { getPostBySlug } from "@/lib/request";
 import { useQuery } from "@tanstack/react-query";
 import { notFound } from "next/navigation";
 
-export default function Post({ slug }: { slug: string }) {
+type Props = {
+  slug: string;
+};
+
+export default function Post({ slug }: Props) {
   const { data } = useQuery({
     queryKey: ["post", slug],
     queryFn: () => getPostBySlug(slug),
   });
-  // if (!data) return ('Page does not exist');
+
   if (!data) return notFound();
 
   return (
@@ -29,7 +34,7 @@ export default function Post({ slug }: { slug: string }) {
         )}
         {data?.author.name}
       </div>
-      <div 
+      <div
         className="blog-content text-xl leading-loose flex flex-col gap-5 mt-5"
         dangerouslySetInnerHTML={{ __html: data!.content.html }}
       ></div>
