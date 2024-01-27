@@ -35,7 +35,7 @@ export async function getBlogName() {
 }
 
 // note , in this code below, the type of object is the getpostsargs
-export async function getPosts({ first = 12, pageParam = "" }: GetPostsArgs) {
+export async function getPosts({ first = 6, pageParam = "" }: GetPostsArgs) {
   const query = gql`
     query getPosts($publicationId: ObjectId!, $first: Int!, $after: String) {
       publication(id: $publicationId) {
