@@ -17,7 +17,7 @@ export default async function Home() {
     queryKey: ["posts"],
     queryFn: getPosts,
     getNextPageParam: (lastPage: { node: PostMetadata; cursor: string }[]) =>
-      lastPage.length < 6 ? undefined : lastPage[lastPage.length - 1].cursor,
+      lastPage.length < 9 ? undefined : lastPage[lastPage.length - 1].cursor,
     initialPageParam: "",
   });
 
