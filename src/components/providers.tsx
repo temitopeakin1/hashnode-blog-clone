@@ -4,7 +4,8 @@
 import { useState } from "react";
 import { ThemeProvider } from "./theme-provider";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { Toaster } from "sonner";
+import { Toaster } from "./ui/sonner";
+
 
 // using typescript
 export default function Providers({ children }: { children: React.ReactNode }) {

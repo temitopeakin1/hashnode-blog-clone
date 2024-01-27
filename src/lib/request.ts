@@ -7,6 +7,7 @@ import {
   GetPostsResponse,
   PublicationName,
   SubscribeToNewsletterResponse,
+  GetPostBySlugResponse,
 } from "./types";
 
 const endpoint = env.NEXT_PUBLIC_HASHNODE_ENDPOINT;
@@ -92,4 +93,34 @@ export async function subscribeToNewsLetter(email: string) {
     }
   );
   return response;
+}
+
+export async function getPostBySlug(slug: string) {
+  const query = gql`
+    query getPostBySlug($publicationId: ObjectId!, $slug: String!) {
+      publication(id: $publicationId) {
+        post(slug: $slug) {
+          title
+          subtitle
+          coverImage {
+            url
+          }
+          content {
+            html
+          }
+          author {
+            name
+            profilePicture
+          }
+        }
+      }
+    }
+  `;
+
+  const response = await request<GetPostBySlugResponse>(endpoint, query, {
+    publicationId,
+    slug,
+  });
+
+  return response.publication.post;
 }

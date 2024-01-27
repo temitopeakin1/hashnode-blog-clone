@@ -12,7 +12,7 @@ export default function Blogcard({ post }: { post: PostMetadata }) {
             src={post.coverImage.url}
             alt={post.title}
           />
-        )}
+        )} 
       </CardHeader>
       <CardContent>
         <h2 className="text-xl font-bold">

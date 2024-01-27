@@ -56,7 +56,7 @@ export type GetPostBySlugResponse = {
   publication: {
     post: {
       title: string;
-      subtitle?: string;
+      subtitle?: string; //optional
       coverImage: {
         url: string;
       };
