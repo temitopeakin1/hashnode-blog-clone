@@ -2,6 +2,7 @@ import Post from "@/components/post";
 import { getPostBySlug } from "@/lib/request";
 import { HydrationBoundary, QueryClient, dehydrate } from "@tanstack/react-query";
 
+
 export async function generateMetaData({
   params,
 }: {
