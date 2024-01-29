@@ -19,8 +19,14 @@ export default function Post({ slug }: Props) {
 
   return (
     <div>
-       <img src={data?.coverImage.url} alt="" className="w-full" />
-      
+      {/* <img src={data?.coverImage.url} alt="" className="w-full" /> */}
+      <Image
+        src={data?.coverImage.url}
+        alt=""
+        width={400}
+        height={400}
+        className="w-full" // Add any additional classes for styling
+      />
       <h1 className="text-4xl lg:text-6xl text-center leading-relaxed font-bold mt-5">
         {data?.title}
       </h1>
