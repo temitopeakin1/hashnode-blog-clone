@@ -21,7 +21,7 @@ export async function generateMetaData() {
   };
 }
 
-export default async function RootLayout({
+export default async function Page({
   children,
 }: {
   children: React.ReactNode;
