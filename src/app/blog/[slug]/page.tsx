@@ -14,7 +14,7 @@ export async function generateMetaData({
   };
 }
 
-export default async function BlogPage({ params }: { params: { slug: string } }) {
+export default async function Blog({ params }: { params: { slug: string } }) {
     const  queryClient = new QueryClient();
 
     await queryClient.prefetchQuery({
