@@ -8,7 +8,7 @@ import {
   QueryClient,
   dehydrate,
 } from "@tanstack/react-query";
-import Image from "next/image";
+
 
 export default async function Home() {
   const queryClient = new QueryClient();

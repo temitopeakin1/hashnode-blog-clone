@@ -43,11 +43,11 @@ export default function NewsletterCard() {
     setOpen(true);
   }
 
-  //set a timeer for the newsleter
+  //set a timeer for the newsleyter
   useEffect(() => {
     setTimeout(() => {
       handleOpen();
-    }, 5000);
+    }, 3000);
   }, []);
 
   return (
