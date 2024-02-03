@@ -14,17 +14,22 @@ export async function generateMetaData({
   };
 }
 
-export default async function BlogPage({ params }: { params: { slug: string } }) {
+export default async function BlogPage({ params }: { params?: { slug: string } }) {
     const  queryClient = new QueryClient();
 
-    await queryClient.prefetchQuery({
-        queryKey: ["post", params.slug], // two query keys are passed here
-        queryFn: () => getPostBySlug(params.slug), // a queryFn
-    })
-  return <div className="max-w-7xl w-full px-3 xl:p-0 mx-auto">
-    <HydrationBoundary state={dehydrate(queryClient)}>
-        <Post slug ={params.slug}/>
-        </HydrationBoundary>
-    </div>;
+      // Add a conditional check for params before prefetching the query
+      if (params?.slug) {
+        await queryClient.prefetchQuery({
+            queryKey: ["post", params.slug],
+            queryFn: () => getPostBySlug(params.slug),
+        });
+    }
+
+  return   <div className="max-w-7xl w-full px-3 xl:p-0 mx-auto">
+  <HydrationBoundary state={dehydrate(queryClient)}>
+    {/* Use nullish coalescing to provide a default value */}
+    <Post slug={params?.slug ?? 'default-slug'} />
+  </HydrationBoundary>
+</div>
 }
 
